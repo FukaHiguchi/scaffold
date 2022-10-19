@@ -1,0 +1,15 @@
+current directory: /Users/fuka/codes/with_scaffold/board/vendor/bundle/ruby/3.1.0/gems/bootsnap-1.13.0/ext/bootsnap
+/Users/fuka/.rbenv/versions/3.1.0/bin/ruby -I /Users/fuka/.rbenv/versions/3.1.0/lib/ruby/3.1.0 -r ./siteconf20221017-55910-zj86fm.rb extconf.rb
+creating Makefile
+
+current directory: /Users/fuka/codes/with_scaffold/board/vendor/bundle/ruby/3.1.0/gems/bootsnap-1.13.0/ext/bootsnap
+make DESTDIR\= clean
+
+current directory: /Users/fuka/codes/with_scaffold/board/vendor/bundle/ruby/3.1.0/gems/bootsnap-1.13.0/ext/bootsnap
+make DESTDIR\=
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/fuka/codes/with_scaffold/board/vendor/bundle/ruby/3.1.0/gems/bootsnap-1.13.0/ext/bootsnap
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20221017-55910-d0mo4b/bootsnap

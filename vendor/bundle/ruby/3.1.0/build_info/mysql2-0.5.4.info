@@ -1,0 +1,2 @@
+--with-ldflags=-L/opt/homebrew/opt/mysql-client/lib
+--with-cppflags=-I/opt/homebrew/opt/mysql-client/include
