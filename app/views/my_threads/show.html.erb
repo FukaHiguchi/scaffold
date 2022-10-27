@@ -9,5 +9,16 @@
   <%= button_to "Destroy this my thread", @my_thread, method: :delete %>
 
   <%= link_to "New Comment", new_my_thread_comment_path(@my_thread) %>
+  <% if @my_thread.comments.any? %>
+  <ul>
+    <% @my_thread.comments.each do |comment| %>
+    <li>
+      <%= comment.text%>
+      <%= link_to "消去", my_thread_comment_path(@my_thread,comment), method: :delete, form: {data: { turbo_confirm: 'Sure?' }} %>
+      <%= link_to "編集", edit_my_thread_comment_path(@my_thread, comment)%>
+    </li>
+    <% end %>
+  </ul>
+  <% end %>
 
 </div>

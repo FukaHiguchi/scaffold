@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  def show 
+    @comment = Comment.find(params[:my_thread_id])
+  end 
   def new
     @my_thread = MyThread.find(params[:my_thread_id])
     @comment = Comment.new
@@ -6,19 +9,44 @@ class CommentsController < ApplicationController
 
   def create
     @my_thread = MyThread.find(params[:my_thread_id])
-    @my_thread.comments.create!(comment_params)
-    redirect_to root_path
-    # if @comment.save
-    #   format.html { redirect_to my_thread_url(@my_thread), notice: "My thread was successfully created." }
-    #   format.json { render :show, status: :created, location: @my_thread }
-    # else
-    #   format.html { render :new, status: :unprocessable_entity }
-    #   format.json { render json: @comment.errors, status: :unprocessable_entity }
-    # end
+    comment = @my_thread.comments.new(comment_params)
+    if comment.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
+  def edit
+    @my_thread = MyThread.find(params[:my_thread_id])
+    @comment = @my_thread.comments.find(params[:id])
+  end
+
+  def update
+    @my_thread = MyThread.find(params[:my_thread_id])
+    @comment = @my_thread.comments.find(params[:id])
+    @comment.update!(update_params)
+    redirect_to root_path
+    # if @comment.update(comment_params)
+    #   flash[:success] = "Comment updated"
+    #   redirect_to root_path
+    # else
+    #   flash[:danger] = "Comment failed"
+    #   render 'edit'
+    # end
+  end 
+
+  def destroy
+    @my_thread = MyThread.find(params[:my_thread_id])
+    @comment = @my_thread.comments.find(params[:id])
+    @comment.destroy
+    redirect_to root_path
+  end
   private
   def comment_params
     params.require(:comment).permit(:text)
+  end
+  def update_params
+    parame.require(:comment).permit(:text)
   end
 end
